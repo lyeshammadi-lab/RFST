@@ -1,0 +1,19 @@
+# Build
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.so
+*.pyd
+
+# VS Code (garder extensions mais pas settings persos)
+.vscode/settings.json
+.vscode/launch.json
+
+# Données lourdes
+data/iq_samples/
+data/cal_results/
+
+# Logs HeIMDALL
+Firmware/_logs/*.log
