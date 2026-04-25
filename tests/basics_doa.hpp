@@ -22,9 +22,8 @@ VectorXcf compute_steering_vector(double theta, int num_antennas, double d_lambd
 
 // --- 2. Filtre NLMS (Mise à jour des poids) ---
 // w: Poids actuels
-// x: Vecteur d'entrée (échantillons)
-// d: Signal désiré
-// mu: Pas d'adaptation
+// x: input vector
+// mu: adaptation step size
 void update_nlms(VectorXcf& w, const VectorXcf& x, complex<float> d, double mu) {
     complex<float> y = w.dot(x);       // Sortie du filtre
     complex<float> error = d - y;      // Erreur
