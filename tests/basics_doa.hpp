@@ -25,9 +25,9 @@ VectorXcf compute_steering_vector(double theta, int num_antennas, double d_lambd
 // x: Vecteur d'entrée (échantillons)
 // d: Signal désiré
 // mu: Pas d'adaptation
-void update_nlms(VectorXcf& w, const VectorXcf& x, complex<double> d, double mu) {
-    complex<double> y = w.dot(x);       // Sortie du filtre
-    complex<double> error = d - y;      // Erreur
+void update_nlms(VectorXcf& w, const VectorXcf& x, complex<float> d, double mu) {
+    complex<float> y = w.dot(x);       // Sortie du filtre
+    complex<float> error = d - y;      // Erreur
     double norm_x = x.squaredNorm();    // Puissance du signal d'entrée
     
     if (norm_x > 1e-6) {
