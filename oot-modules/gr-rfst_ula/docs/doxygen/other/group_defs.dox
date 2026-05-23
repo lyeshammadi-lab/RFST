@@ -1,0 +1,6 @@
+/*!
+ * \defgroup block GNU Radio RFST_ULA C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the RFST_ULA GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
