@@ -102,8 +102,7 @@ int adaptive_doa_ula_impl::work(int noutput_items,
         double kSps = static_cast<double>(d_samples_since_report) / elapsed / 1e3;
         std::cout << "[RFST-ULA] Cumulés: " << d_total_samples
                   << " | Vitesse: " << std::fixed << std::setprecision(2)
-                  << kSps << " kSps | Bloc: " << noutput_items << "
-";
+                  << kSps << " kSps | Bloc: " << noutput_items << " samples";
         d_samples_since_report = 0;
         d_last_report = now;
     }
