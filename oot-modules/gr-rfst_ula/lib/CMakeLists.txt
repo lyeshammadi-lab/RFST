@@ -24,6 +24,18 @@ endif(NOT rfst_ula_sources)
 
 add_library(gnuradio-rfst_ula SHARED ${rfst_ula_sources})
 target_link_libraries(gnuradio-rfst_ula gnuradio::gnuradio-runtime)
+
+# ── Optimisations agressives pour la boucle Gazor ────────────────────
+target_compile_options(gnuradio-rfst_ula PRIVATE
+    -O3
+    -march=native       # SIMD automatique (AVX2/AVX512 si dispo)
+    -ffast-math         # supprime les checks NaN/Inf, accélère asin/sin/cos
+    -funroll-loops      # deroule les boucles M=5, M-1=4
+    -fomit-frame-pointer
+)
+
+
+
 target_include_directories(
     gnuradio-rfst_ula
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
@@ -55,8 +67,9 @@ include(GrTest)
 # If your unit tests require special include paths, add them here
 #include_directories()
 # List all files that contain Boost.UTF unit tests here
-list(APPEND test_rfst_ula_sources)
-qa_adaptive_doa_ula.cc
+list(APPEND test_rfst_ula_sources
+    qa_adaptive_doa_ula.cc
+)
 # Anything we need to link to for the unit tests go here
 list(APPEND GR_TEST_TARGET_DEPS gnuradio-rfst_ula)
 

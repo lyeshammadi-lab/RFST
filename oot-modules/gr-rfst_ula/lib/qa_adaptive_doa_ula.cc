@@ -1,21 +1,9 @@
-/* -*- c++ -*- */
-/*
- * Copyright 2026 HAMMADI LYES/KEBIECHE FARES.
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
-#include <gnuradio/attributes.h>
-#include <gnuradio/rfst_ula/adaptive_doa_ula.h>
 #include <boost/test/unit_test.hpp>
+#include <gnuradio/rfst_ula/adaptive_doa_ula.h>
 
-namespace gr {
-namespace rfst_ula {
-
-BOOST_AUTO_TEST_CASE(test_adaptive_doa_ula_replace_with_specific_test_name)
+BOOST_AUTO_TEST_CASE(t1)
 {
-    // Put test here
+    // Test minimal — vérifie juste que la factory existe
+    auto blk = gr::rfst_ula::adaptive_doa_ula::make(0.05f, 1e-5f, 0.0f);
+    BOOST_TEST(blk != nullptr);
 }
-
-} /* namespace rfst_ula */
-} /* namespace gr */
