@@ -1,52 +1,47 @@
 id: rfst_ula_adaptive_doa_ula
-label: Adaptive DoA ULA (RFST)
-category: '[RFST] Direction of Arrival'
+label: adaptive_doa_ula
+category: '[rfst_ula]'
 
 templates:
-    imports: import rfst_ula
-    make: rfst_ula.adaptive_doa_ula(${mu}, ${eta}, ${initial_theta})
-    callbacks:
-    -   set_mu(${mu})
-    -   set_eta(${eta})
+  imports: from gnuradio import rfst_ula
+  make: rfst_ula.adaptive_doa_ula(${mu}, ${eta}, ${initial_theta})
 
+#  Make one 'parameters' list entry for every parameter you want settable from the GUI.
+#     Keys include:
+#     * id (makes the value accessible as keyname, e.g. in the make entry)
+#     * label (label shown in the GUI)
+#     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#     * default
 parameters:
--   id: mu
-    label: "Step size μ (steering)"
-    dtype: float
-    default: '0.05'
--   id: eta
-    label: "Step size η (LMS)"
-    dtype: float
-    default: '1e-5'
--   id: initial_theta
-    label: "Initial angle (deg)"
-    dtype: float
-    default: '0'
+- id: parametername_replace_me
+  label: FIX ME:
+  dtype: string
+  default: You need to fill in your grc/rfst_ula_adaptive_doa_ula.block.yaml
+#- id: ...
+#  label: ...
+#  dtype: ...
 
+#  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
+#  Keys include:
+#      * label (an identifier for the GUI)
+#      * domain (optional - stream or message. Default is stream)
+#      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#      * vlen (optional - data stream vector length. Default is 1)
+#      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
--   domain: stream
-    dtype: complex
-    label: ant_0
--   domain: stream
-    dtype: complex
-    label: ant_1
--   domain: stream
-    dtype: complex
-    label: ant_2
--   domain: stream
-    dtype: complex
-    label: ant_3
--   domain: stream
-    dtype: complex
-    label: ant_4
+#- label: ...
+#  domain: ...
+#  dtype: ...
+#  vlen: ...
+#  optional: ...
 
 outputs:
--   domain: stream
-    dtype: float
-    label: theta_deg
--   domain: stream
-    dtype: complex
-    vlen: 5
-    label: steering_vec_G
+#- label: ...
+#  domain: ...
+#  dtype: ...
+#  vlen: ...
+#  optional: ...
 
+#  'file_format' specifies the version of the GRC yml format used in the file
+#  and should usually not be changed.
 file_format: 1
